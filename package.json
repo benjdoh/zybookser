@@ -14,12 +14,17 @@
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^3.0.1",
-    "@tsconfig/svelte": "^5.0.2",
-    "svelte": "^4.2.8",
-    "svelte-check": "^3.6.2",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@tsconfig/svelte": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "radix3": "^1.1.2",
+    "svelte": "^4.2.17",
+    "svelte-check": "^3.7.1",
+    "tailwindcss": "^3.4.3",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3",
-    "wxt": "^0.17.0"
+    "typescript": "^5.4.5",
+    "unocss": "^0.58.9",
+    "wxt": "^0.17.12"
   }
 }
