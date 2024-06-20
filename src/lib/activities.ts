@@ -112,4 +112,34 @@ export async function startShortQuestions() {
 
 export async function startActivities() {
   await Promise.all([startAnimationPlayer(), startMultipleChoices(), startShortQuestions()])
+
+  const chevrons = await waitForSelectorAll('.zb-chevron')
+  if (chevrons.length < 1) return
+
+  let notCompleted = 0
+  const observer = new MutationObserver((mutations) => {
+    for (const record of mutations) {
+      const label = (record.target as HTMLElement).getAttribute('aria-label')
+      if (label !== 'Activity completed') continue
+
+      notCompleted--
+    }
+  })
+
+  for (const chevron of chevrons) {
+    if (chevron.getAttribute('aria-label') === 'Activity completed') continue
+    notCompleted++
+
+    observer.observe(chevron, {
+      attributes: true,
+      attributeFilter: ['aria-label'],
+    })
+  }
+
+  while (notCompleted > 0) {
+    await sleep(1000)
+  }
+
+  observer.disconnect()
+  console.log('activities done!')
 }
